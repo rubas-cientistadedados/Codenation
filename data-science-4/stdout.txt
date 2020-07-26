@@ -1,0 +1,29 @@
+============================= test session starts ==============================
+platform linux -- Python 3.7.3, pytest-4.6.2, py-1.8.0, pluggy-0.12.0 -- /home/nihilo/codenation/data-science-4/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/nihilo/codenation/data-science-4
+collecting ... collected 7 items
+
+test_main.py::test_q1 PASSED                                             [ 14%]
+test_main.py::test_q2 PASSED                                             [ 28%]
+test_main.py::test_q3 PASSED                                             [ 42%]
+test_main.py::test_q4 PASSED                                             [ 57%]
+test_main.py::test_q5 PASSED                                             [ 71%]
+test_main.py::test_q6 PASSED                                             [ 85%]
+test_main.py::test_q7 PASSED                                             [100%]
+
+=============================== warnings summary ===============================
+venv/lib/python3.7/site-packages/statsmodels/tools/_testing.py:19
+  /home/nihilo/codenation/data-science-4/venv/lib/python3.7/site-packages/statsmodels/tools/_testing.py:19: FutureWarning: pandas.util.testing is deprecated. Use the functions in the public API at pandas.testing instead.
+    import pandas.util.testing as tm
+
+main.py:111
+  /home/nihilo/codenation/data-science-4/main.py:111: SettingWithCopyWarning: 
+  A value is trying to be set on a copy of a slice from a DataFrame.
+  Try using .loc[row_indexer,col_indexer] = value instead
+  
+  See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+    df_str[col] = df_str[col].str.strip()
+
+-- Docs: https://docs.pytest.org/en/latest/warnings.html
+==================== 7 passed, 2 warnings in 12.78 seconds =====================
