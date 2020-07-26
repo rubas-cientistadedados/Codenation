@@ -1,0 +1,26 @@
+============================= test session starts ==============================
+platform linux -- Python 3.7.3, pytest-4.6.2, py-1.8.0, pluggy-0.12.0 -- /home/nihilo/codenation/data-science-3/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/nihilo/codenation/data-science-3
+collecting ... collected 4 items
+
+test_main.py::test_q1 PASSED                                             [ 25%]
+test_main.py::test_q2 PASSED                                             [ 50%]
+test_main.py::test_q3 PASSED                                             [ 75%]
+test_main.py::test_q4 PASSED                                             [100%]
+
+=============================== warnings summary ===============================
+venv/lib/python3.7/site-packages/statsmodels/tools/_testing.py:19
+  /home/nihilo/codenation/data-science-3/venv/lib/python3.7/site-packages/statsmodels/tools/_testing.py:19: FutureWarning: pandas.util.testing is deprecated. Use the functions in the public API at pandas.testing instead.
+    import pandas.util.testing as tm
+
+venv/lib/python3.7/site-packages/patsy/constraint.py:13
+  /home/nihilo/codenation/data-science-3/venv/lib/python3.7/site-packages/patsy/constraint.py:13: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
+    from collections import Mapping
+
+venv/lib/python3.7/site-packages/statsmodels/compat/pandas.py:23
+  /home/nihilo/codenation/data-science-3/venv/lib/python3.7/site-packages/statsmodels/compat/pandas.py:23: FutureWarning: The Panel class is removed from pandas. Accessing it from the top-level namespace will also be removed in the next version
+    data_klasses = (pandas.Series, pandas.DataFrame, pandas.Panel)
+
+-- Docs: https://docs.pytest.org/en/latest/warnings.html
+==================== 4 passed, 3 warnings in 13.87 seconds =====================
