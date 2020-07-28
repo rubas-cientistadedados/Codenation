@@ -38,13 +38,13 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 # sns.set()
 
 
-# In[2]:
+# In[19]:
 
 
-countries = pd.read_csv("countries.csv")
+countries = pd.read_csv("countries.csv", decimal=',')
 
 
-# In[3]:
+# In[20]:
 
 
 new_column_names = [
@@ -67,43 +67,25 @@ countries.head(5)
 
 # ## Inicia sua análise a partir daqui
 
-# In[4]:
+# In[22]:
 
 
 col_str = ['Country', 'Region']
 col_int = ['Population', 'Area']
 
-
+# Copying String 
 df_str = countries[col_str]
 countries.drop(columns= col_str, inplace=True)
 
-df_int = countries[col_int]
+# Converting int
+df_int = countries[col_int].astype(int)
 countries.drop(columns= col_int, inplace=True)
 
-df_float = countries
+df_float = countries.astype(float)
 col_flt = countries.columns
 
 
-# In[5]:
-
-
-# conversion Int64
-df_int = df_int.astype(int)
-
-
-# In[6]:
-
-
-# convertion float
-
-for col in df_float.columns:
-    if col != 'GDP':
-        df_float[col] = df_float[col].str.replace(',', '.')
-
-df_float = df_float.astype(float)
-
-
-# In[7]:
+# In[23]:
 
 
 # clean str
@@ -111,7 +93,7 @@ for col in df_str.columns:
     df_str[col] = df_str[col].str.strip()
 
 
-# In[8]:
+# In[24]:
 
 
 countries = pd.concat([df_str, df_int, df_float], axis=1)
@@ -140,7 +122,7 @@ def q2():
     discretizer = KBinsDiscretizer(n_bins=10, encode="ordinal", strategy="quantile")
     score_bins = discretizer.fit_transform(countries[['Pop_density']])
 
-    return int(sum(score_bins[:, 0] == 8))
+    return int(sum(score_bins[:, 0] == 9))
 
 
 # # Questão 3
@@ -170,7 +152,7 @@ def q3():
 # 
 # Após aplicado o _pipeline_ descrito acima aos dados (somente nas variáveis dos tipos especificados), aplique o mesmo _pipeline_ (ou `ColumnTransformer`) ao dado abaixo. Qual o valor da variável `Arable` após o _pipeline_? Responda como um único float arredondado para três casas decimais.
 
-# In[297]:
+# In[32]:
 
 
 test_country = [
@@ -184,7 +166,7 @@ test_country = [
 ]
 
 
-# In[310]:
+# In[29]:
 
 
 def q4():
@@ -192,11 +174,14 @@ def q4():
         ('imputer', SimpleImputer(strategy="median")),
         ('standardscaler', StandardScaler())               
     ])
+    
     columns = np.concatenate((col_int, col_flt))
+    # df.select_dtypes(['int64','float64']).columns.to_list()
 
     pepiline_countries = pipeline.fit_transform(countries[columns])
     pepiline_test_countries = pipeline.transform([test_country[2:]])
 
+    # countries.columns.get_loc('Arable')
     return float(pepiline_test_countries[0,9].round(3))
 
 
